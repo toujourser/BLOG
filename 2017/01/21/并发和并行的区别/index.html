@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="原理,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="##  OK，如果你还在为并发（concurrency）和并行（parallelism）这两个词的区别而感到困扰，那么这篇文章就是写给你看的。搞这种词语辨析到底有什么意义？其实没什么意义，但是有太多人在混用错用这两个词（比如遇到的某门课的老师）。不论中文圈还是英文圈，即使已经有数不清的文章在讨论并行vs并发，却极少有能讲清楚的。让一个讲不清楚的人来解释，比不解释更可怕。比如我随便找了个网上的解释">
+<meta name="keywords" content="原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并发和并行的区别">
+<meta property="og:url" content="https://toujourser.github.io/blog/2017/01/21/并发和并行的区别/index.html">
+<meta property="og:site_name" content="EchoDS">
+<meta property="og:description" content="##  OK，如果你还在为并发（concurrency）和并行（parallelism）这两个词的区别而感到困扰，那么这篇文章就是写给你看的。搞这种词语辨析到底有什么意义？其实没什么意义，但是有太多人在混用错用这两个词（比如遇到的某门课的老师）。不论中文圈还是英文圈，即使已经有数不清的文章在讨论并行vs并发，却极少有能讲清楚的。让一个讲不清楚的人来解释，比不解释更可怕。比如我随便找了个网上的解释">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12995081-f1a410d025f53bdc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12995081-b16a004c7053a1c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12995081-9a6dc02ab5733990.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-28T16:10:57.645Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="并发和并行的区别">
+<meta name="twitter:description" content="##  OK，如果你还在为并发（concurrency）和并行（parallelism）这两个词的区别而感到困扰，那么这篇文章就是写给你看的。搞这种词语辨析到底有什么意义？其实没什么意义，但是有太多人在混用错用这两个词（比如遇到的某门课的老师）。不论中文圈还是英文圈，即使已经有数不清的文章在讨论并行vs并发，却极少有能讲清楚的。让一个讲不清楚的人来解释，比不解释更可怕。比如我随便找了个网上的解释">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/12995081-f1a410d025f53bdc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://toujourser.github.io/blog/2017/01/21/并发和并行的区别/">
+
+
+
+
+
+  <title>并发和并行的区别 | EchoDS</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/toujourser" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">EchoDS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toujourser.github.io/blog/blog/2017/01/21/并发和并行的区别/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MDS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EchoDS">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">并发和并行的区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-21T23:03:25+08:00">
+                2017-01-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/计算机原理/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>## </p>
+<p>OK，如果你还在为并发（concurrency）和并行（parallelism）这两个词的区别而感到困扰，那么这篇文章就是写给你看的。搞这种词语辨析到底有什么意义？其实没什么意义，但是有太多人在混用错用这两个词（比如遇到的某门课的老师）。不论中文圈还是英文圈，即使已经有数不清的文章在讨论并行vs并发，却极少有能讲清楚的。让一个讲不清楚的人来解释，比不解释更可怕。比如我随便找了个网上的解释</p>
+<blockquote>
+<p>前者是逻辑上的同时发生（simultaneous），而后者是物理上的同时发生．</p>
+<p>并发性(concurrency)，又称共行性，是指能处理多个同时性活动的能力，并发事件之间不一定要同一时刻发生。</p>
+<p>并行(parallelism)是指同时发生的两个并发事件，具有并发的含义，而并发则不一定并行。</p>
+<p>来个比喻：并发和并行的区别就是一个人同时吃三个馒头和三个人同时吃三个馒头。</p>
+</blockquote>
+<p>看了之后，你懂了么？不懂，更晕了。写出这类解释的人，自己也是一知半解，却又把自己脑子里模糊的影像拿出来写成文章，让读者阅毕反而更加疑惑。当然也有可能他确实懂了，但是写出这种文字也不能算负责。至于本文，请相信，一定是准确的，我也尽量做到讲解清晰。</p>
+<p>OK，下面进入正题，concurrency vs parallelism</p>
+<p>让我们大声朗读下面这句话：</p>
+<h3 id="“并发”指的是程序的结构，“并行”指的是程序运行时的状态"><a href="#“并发”指的是程序的结构，“并行”指的是程序运行时的状态" class="headerlink" title="“并发”指的是程序的结构，“并行”指的是程序运行时的状态"></a>“并发”指的是程序的结构，“并行”指的是程序运行时的状态</h3><p>即使不看详细解释，也请记住这句话。下面来具体说说：</p>
+<h4 id="并行（parallelism）"><a href="#并行（parallelism）" class="headerlink" title="并行（parallelism）"></a>并行（parallelism）</h4><p>这个概念很好理解。所谓并行，就是同时执行的意思，无需过度解读。判断程序是否处于并行的状态，就看同一时刻是否有超过一个“工作单位”在运行就好了。所以，<strong>单线程永远无法达到并行状态。</strong></p>
+<p>要达到并行状态，最简单的就是利用多线程和多进程。但是 Python 的多线程由于存在著名的 GIL，无法让两个线程真正“同时运行”，所以实际上是无法到达并行状态的。</p>
+<h4 id="并发（concurrency）"><a href="#并发（concurrency）" class="headerlink" title="并发（concurrency）"></a>并发（concurrency）</h4><p>要理解“并发”这个概念，必须得清楚，<strong>并发指的是程序的“结构”。</strong>当我们说这个程序是并发的，实际上，这句话应当表述成“这个程序采用了支持并发的设计”。好，既然并发指的是人为设计的结构，那么怎样的程序结构才叫做支持并发的设计？</p>
+<p><strong>正确的并发设计的标准是：使多个操作可以在重叠的时间段内进行(two tasks can start, run, and complete in overlapping time periods)</strong>。</p>
+<p>这句话的重点有两个。我们先看“（操作）在重叠的时间段内进行”这个概念。它是否就是我们前面说到的并行呢？是，也不是。并行，当然是在重叠的时间段内执行，但是另外一种执行模式，也属于在重叠时间段内进行。这就是<a href="http://zh.wikipedia.org/wiki/%E5%8D%8F%E7%A8%8B" target="_blank" rel="noopener">协程</a>。</p>
+<p>使用协程时，程序的执行看起来往往是这个样子：<br><img src="https://upload-images.jianshu.io/upload_images/12995081-f1a410d025f53bdc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="协程运行状态"></p>
+<p>task1, task2 是两段不同的代码，比如两个函数，其中黑色块代表某段代码正在执行。注意，这里从始至终，<strong>在任何一个时间点上都只有一段代码在执行</strong>，但是，由于 task1 和 task2 在重叠的时间段内执行，所以这是一个支持并发的设计。与并行不同，单核单线程能支持并发。</p>
+<p>经常看到这样一个说法，叫做<strong>并发执行</strong>。现在我们可以正确理解它。有两种可能：</p>
+<ol>
+<li>原本想说的是“并行执行”，但是用错了词</li>
+<li>指多个操作可以在重叠的时间段内进行，即，真的并行，或是类似上图那样的执行模式。</li>
+</ol>
+<p>我的建议是尽可能不使用这个词，容易造成误会，尤其是对那些并发并行不分的人。但是读到这里的各位显然能正确区分，所以下面为了简便，将使用并发执行这个词。</p>
+<p>第二个重点是“<strong>可以</strong>在重叠的时间段内进行”中的<strong>“可以”</strong>两个字。“可以”的意思是，正确的并发设计使并发执行成为可能，但是程序在实际运行时却不一定会出现多个任务执行时间段 overlap 的情形。比如：我们的程序会为每个任务开一个线程或者协程，只有一个任务时，显然不会出现多个任务执行时间段重叠的情况，有多个任务时，就会出现了。这里我们看到，并发并不描述程序执行的状态，它描述的是一种设计，是程序的结构，比如上面例子里“为每个任务开一个线程”的设计。并发设计和程序实际执行情况没有直接关联，但是正确的并发设计让并发执行成为可能。反之，如果程序被设计为执行完一个任务再接着执行下一个，那就不是并发设计了，因为做不到并发执行。</p>
+<p>那么，如何实现支持并发的设计？两个字：<strong>拆分。</strong></p>
+<p>之所以并发设计往往需要把流程拆开，是因为如果不拆分也就不可能在同一时间段进行多个任务了。这种拆分可以是平行的拆分，比如抽象成同类的任务，也可以是不平行的，比如分为多个步骤。</p>
+<h3 id="并发和并行的关系"><a href="#并发和并行的关系" class="headerlink" title="并发和并行的关系"></a>并发和并行的关系</h3><blockquote>
+<p><strong>Different concurrent designs enable different ways to parallelize.</strong></p>
+</blockquote>
+<p>这句话来自著名的talk: <a href="http://blog.golang.org/concurrency-is-not-parallelism" target="_blank" rel="noopener"><strong>Concurrency is not parallelism</strong></a>。它足够concise，以至于不需要过多解释。但是仅仅引用别人的话总是不太好，所以我再用之前文字的总结来说明：<strong>并发设计让并发执行成为可能，而并行是并发执行的一种模式</strong>。</p>
+<p>最后，关于Concurrency is not parallelism这个talk再多说点。自从这个talk出来，直接引爆了一堆讨论并发vs并行的文章，并且无一例外提到这个talk，甚至有的文章直接用它的slide里的图片来说明。比如这张：<br><img src="https://upload-images.jianshu.io/upload_images/12995081-b16a004c7053a1c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Concurrency is not parallelism"></p>
+<p>以为我要解释这张图吗？NO。放这张图的唯一原因就是萌萌的gopher。</p>
+<p>再来张特写：<br><img src="https://upload-images.jianshu.io/upload_images/12995081-9a6dc02ab5733990.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="gopher"></p>
+<p>之前看到知乎上有个关于go为什么流行的问题，有个答案是“logo萌”当时我就笑喷了。</p>
+<p>好像跑题了，继续说这个 talk。和很多人一样，我也是看了这个 talk 才开始思考 concurrency vs parallesim 的问题。为了研究那一堆推小车的 gopher 到底是怎么回事，我花费了相当多的时间。实际上后来我更多地是通过网上的只言片语（比如SO的回答）和自己的思考弄清了这个问题，talk 并没有很大帮助。彻底明白之后再回过头来看这个 talk，确实相当不错，Andrew Gerrand 对这个问题的理解绝对够深刻，但是太不新手向了。最大问题在于，那一堆 gopher 的例子不够好，太复杂。Andrew Gerrand 花了大把时间来讲述不同的并发设计，但是作为第一次接触这个话题的人，在没有搞清楚并发并行区别的情况下就去研究推小车的 gopher，太难了。“Different concurrent designs enable different ways to parallelize” 这句总结很精辟，但也只有那些已经透彻理解的人才能领会，比如我和看到这里的读者，对新手来说就和经文一样难懂。总结下来一句话，不要一开始就去看这个视频，也不要花时间研究推小车的gopher。<strong>Gopher is moe, but confusing.</strong></p>
+<p>最关键的一点是，<strong>计算机在不同层次上都使用了并行技术</strong>。之前我讨论的实际上仅限于 Task-Level 这一层，在这一层上，并行无疑是并发的一个子集。但是并行并非并发的子集，因为在 Bit-Level 和 Instruction-Level 上的并行不属于并发——比如引文中举的 32 位计算机执行 32 位数加法的例子，同时处理 4 个字节显然是一种并行，但是它们都属于 32 位加法这一个任务，并不存在多个任务，也就根本没有并发。</p>
+<p>所以，正确的说法是这样：<br><strong>并行指物理上同时执行，并发指能够让多个任务在逻辑上交织执行的程序设计</strong></p>
+<p>按照我现在的理解，并发针对的是 Task-Level 及更高层，并行则不限。这也是它们的区别。</p>
+<p>原文：<a href="https://laike9m.com/blog/huan-zai-yi-huo-bing-fa-he-bing-xing,61/" target="_blank" rel="noopener">https://laike9m.com/blog/huan-zai-yi-huo-bing-fa-he-bing-xing,61/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/原理/" <i="" class="fa fa-tag"> 原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/01/14/同步-异步-阻塞-非阻塞-之间的关系/" rel="next" title="同步-异步-阻塞-非阻塞-之间的关系">
+                <i class="fa fa-chevron-left"></i> 同步-异步-阻塞-非阻塞-之间的关系
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/02/05/装饰器/" rel="prev" title="装饰器">
+                装饰器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">MDS</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#“并发”指的是程序的结构，“并行”指的是程序运行时的状态"><span class="nav-number">1.</span> <span class="nav-text">“并发”指的是程序的结构，“并行”指的是程序运行时的状态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并行（parallelism）"><span class="nav-number">1.1.</span> <span class="nav-text">并行（parallelism）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并发（concurrency）"><span class="nav-number">1.2.</span> <span class="nav-text">并发（concurrency）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发和并行的关系"><span class="nav-number">2.</span> <span class="nav-text">并发和并行的关系</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MDS</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共34.6k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

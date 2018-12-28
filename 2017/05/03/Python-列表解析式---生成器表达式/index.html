@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="语法糖,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="EchoDS">
-<meta property="og:url" content="https://toujourser.github.io/blog/archives/index.html">
+<meta name="description" content="列表解析式 语法  [ 返回值 for 元素 in 可迭代对象 if 条件 ] 使用中括号[]，内部是for循环，if 条件语句可选 返回一个新的列表     列表解析式是一种语法糖  编译器会优化，不会因为简写而简写影响效率，反而因优化提高了效率 减少程序员工作量，减少出错 简化了代码，但可读性增强    生成器表达式 语法  ( 返回值 for 元素 in 可迭代对象 if 条件 ) 列表解析">
+<meta name="keywords" content="语法糖">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-列表解析式-生成器表达式">
+<meta property="og:url" content="https://toujourser.github.io/blog/2017/05/03/Python-列表解析式---生成器表达式/index.html">
 <meta property="og:site_name" content="EchoDS">
+<meta property="og:description" content="列表解析式 语法  [ 返回值 for 元素 in 可迭代对象 if 条件 ] 使用中括号[]，内部是for循环，if 条件语句可选 返回一个新的列表     列表解析式是一种语法糖  编译器会优化，不会因为简写而简写影响效率，反而因优化提高了效率 减少程序员工作量，减少出错 简化了代码，但可读性增强    生成器表达式 语法  ( 返回值 for 元素 in 可迭代对象 if 条件 ) 列表解析">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-28T16:06:58.723Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EchoDS">
+<meta name="twitter:title" content="Python-列表解析式-生成器表达式">
+<meta name="twitter:description" content="列表解析式 语法  [ 返回值 for 元素 in 可迭代对象 if 条件 ] 使用中括号[]，内部是for循环，if 条件语句可选 返回一个新的列表     列表解析式是一种语法糖  编译器会优化，不会因为简写而简写影响效率，反而因优化提高了效率 减少程序员工作量，减少出错 简化了代码，但可读性增强    生成器表达式 语法  ( 返回值 for 元素 in 可迭代对象 if 条件 ) 列表解析">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://toujourser.github.io/blog/archives/">
+  <link rel="canonical" href="https://toujourser.github.io/blog/2017/05/03/Python-列表解析式---生成器表达式/">
 
 
 
 
 
-  <title>归档 | EchoDS</title>
+  <title>Python-列表解析式-生成器表达式 | EchoDS</title>
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/toujourser" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -244,391 +249,242 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toujourser.github.io/blog/blog/2017/05/03/Python-列表解析式---生成器表达式/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MDS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EchoDS">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Python-列表解析式-生成器表达式</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T22:33:53+08:00">
+                2017-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 28 篇日志。 继续努力。
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/blog/2017/06/19/Python-反射/" itemprop="url">
-              
-                <span itemprop="name">Python-反射</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-06-19T19:55:22+08:00" content="2017-06-19">
-          06-19
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/blog/2017/06/18/JavaScript-Mixin模式/" itemprop="url">
-              
-                <span itemprop="name">JavaScript_Mixin</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-06-18T23:24:18+08:00" content="2017-06-18">
-          06-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/blog/2017/06/07/python-高阶函数/" itemprop="url">
-              
-                <span itemprop="name">Python-高阶函数</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-06-07T21:33:57+08:00" content="2017-06-07">
-          06-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h3 id="列表解析式"><a href="#列表解析式" class="headerlink" title="列表解析式"></a>列表解析式</h3><ul>
+<li><p>语法</p>
+<ul>
+<li>[ 返回值 for 元素 in 可迭代对象 if 条件 ]</li>
+<li>使用中括号[]，内部是for循环，if 条件语句可选</li>
+<li>返回一个新的列表</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>列表解析式是一种语法糖</p>
+<ul>
+<li>编译器会优化，不会因为简写而简写影响效率，反而因优化提高了效率</li>
+<li>减少程序员工作量，减少出错</li>
+<li>简化了代码，但可读性增强</li>
+</ul>
+</li>
+</ul>
+<h3 id="生成器表达式"><a href="#生成器表达式" class="headerlink" title="生成器表达式"></a>生成器表达式</h3><ul>
+<li><p>语法</p>
+<ul>
+<li>( 返回值 for 元素 in 可迭代对象 if 条件 )</li>
+<li>列表解析式的中括号换成小括号()就行了</li>
+<li>返回一个生成器</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>和列表解析式的区别</p>
+<ul>
+<li><p>生成器表达式是按需求计算（或称惰性求值、延迟计算），需要的时候才计算值</p>
+</li>
+<li><p>列表解析式是立即返回值</p>
+</li>
+<li><p>计算方式</p>
+<ul>
+<li>生成器（延迟计算、返回迭代器、从前到后走完一遍，不能回头）</li>
+<li>列表解析式（立即计算、返回的不是迭代器，返回可迭代对象列表，从前到后走完一遍后，可以重新回头迭代）</li>
+</ul>
+</li>
+<li><p>内存占用</p>
+<ul>
+<li>单从返回值本身来说，生成器表达式省内存，列表解析式返回新的列表</li>
+<li>生成器没有数据，内存占用极少，但是使用的时候，虽然一个个返回数据，但是合起来占用的内存也差不多</li>
+<li>列表解析式构造新的列表需要占用内存</li>
+</ul>
+</li>
+<li><p>计算速度</p>
+<ul>
+<li>单看计算时间，生成器表达式耗时非常短，列表解析式耗时长</li>
+<li>但是生成器本身并没有返回任何值，只返回了一个生成器对象</li>
+<li>列表解析式构造并返回了一个新的列表</li>
+</ul>
+</li>
+<li><p>生成器</p>
+<ul>
+<li>可迭代对象</li>
+<li>迭代器</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="生成器和迭代器是不同的对象，但是都是可迭代对象！！！"><a href="#生成器和迭代器是不同的对象，但是都是可迭代对象！！！" class="headerlink" title="生成器和迭代器是不同的对象，但是都是可迭代对象！！！"></a><em>生成器和迭代器是不同的对象，但是都是可迭代对象！！！</em></h4><p><strong>集合解析式类似列表解析式，使用花括号{}即可</strong></p>
+<h3 id="字典解析式"><a href="#字典解析式" class="headerlink" title="字典解析式"></a>字典解析式</h3><ul>
+<li>{返回值 for 元素 in 可迭代对象 if 条件}</li>
+<li>列表解析式的中括号换成大括号{}即可</li>
+<li>使用key.value形式</li>
+<li>立即返回一个字典</li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/blog/2017/05/24/Python-函数、参数、作用域/" itemprop="url">
-              
-                <span itemprop="name">Python-列表解析式-生成器表达式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-05-24T21:30:27+08:00" content="2017-05-24">
-          05-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/blog/2017/05/08/Python-类/" itemprop="url">
-              
-                <span itemprop="name">Python-类</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-05-08T21:39:01+08:00" content="2017-05-08">
-          05-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/blog/2017/05/03/Python-列表解析式---生成器表达式/" itemprop="url">
-              
-                <span itemprop="name">Python-列表解析式-生成器表达式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-05-03T22:33:53+08:00" content="2017-05-03">
-          05-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/blog/2017/04/28/Python-七段数码管绘制/" itemprop="url">
-              
-                <span itemprop="name">Demo_七段数码管绘制</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-04-28T22:33:53+08:00" content="2017-04-28">
-          04-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/blog/2017/04/22/Python-数据结构-list/" itemprop="url">
-              
-                <span itemprop="name">Python-数据结构-List</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-04-22T21:19:22+08:00" content="2017-04-22">
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/blog/2017/04/13/Python-数据结构-set/" itemprop="url">
-              
-                <span itemprop="name">Python-数据结构-set</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-04-13T22:15:29+08:00" content="2017-04-13">
-          04-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/blog/2017/04/07/Python-数据结构-tuple/" itemprop="url">
-              
-                <span itemprop="name">Python-数据结构-tuple</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2017-04-07T18:55:23+08:00" content="2017-04-07">
-          04-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/语法糖/" <i="" class="fa fa-tag"> 语法糖</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/04/28/Python-七段数码管绘制/" rel="next" title="Demo_七段数码管绘制">
+                <i class="fa fa-chevron-left"></i> Demo_七段数码管绘制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/05/08/Python-类/" rel="prev" title="Python-类">
+                Python-类 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/blog/archives/page/2/">2</a><a class="page-number" href="/blog/archives/page/3/">3</a><a class="extend next" rel="next" href="/blog/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -636,6 +492,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -656,8 +516,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -717,6 +586,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#列表解析式"><span class="nav-number">1.</span> <span class="nav-text">列表解析式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器表达式"><span class="nav-number">2.</span> <span class="nav-text">生成器表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生成器和迭代器是不同的对象，但是都是可迭代对象！！！"><span class="nav-number">2.1.</span> <span class="nav-text">生成器和迭代器是不同的对象，但是都是可迭代对象！！！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典解析式"><span class="nav-number">3.</span> <span class="nav-text">字典解析式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -857,6 +742,10 @@
   
 
   
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

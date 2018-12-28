@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Git,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Git git是一个分布式版本控制软件，最初由林纳斯·托瓦兹创作，于2005年以GPL发布。最初目的是为更好地管理Linux内核开发而设计。  林纳斯·托瓦兹自嘲地取了这个名字“git”，该词源自英国俚语，意思大约是“混账”。  I&amp;#39;m an egotistical bastard, and I name all my projects after myself. First Linux,">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GIT笔记">
+<meta property="og:url" content="https://toujourser.github.io/blog/2016/06/26/git-学习小结/index.html">
+<meta property="og:site_name" content="EchoDS">
+<meta property="og:description" content="Git git是一个分布式版本控制软件，最初由林纳斯·托瓦兹创作，于2005年以GPL发布。最初目的是为更好地管理Linux内核开发而设计。  林纳斯·托瓦兹自嘲地取了这个名字“git”，该词源自英国俚语，意思大约是“混账”。  I&amp;#39;m an egotistical bastard, and I name all my projects after myself. First Linux,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-28T16:02:34.172Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GIT笔记">
+<meta name="twitter:description" content="Git git是一个分布式版本控制软件，最初由林纳斯·托瓦兹创作，于2005年以GPL发布。最初目的是为更好地管理Linux内核开发而设计。  林纳斯·托瓦兹自嘲地取了这个名字“git”，该词源自英国俚语，意思大约是“混账”。  I&amp;#39;m an egotistical bastard, and I name all my projects after myself. First Linux,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://toujourser.github.io/blog/2016/06/26/git-学习小结/">
+
+
+
+
+
+  <title>GIT笔记 | EchoDS</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/toujourser" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">EchoDS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toujourser.github.io/blog/blog/2016/06/26/git-学习小结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MDS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EchoDS">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">GIT笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-26T20:23:22+08:00">
+                2016-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><blockquote>
+<p><strong>git</strong>是一个<a href="https://zh.wikipedia.org/wiki/%E5%88%86%E6%95%A3%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6" target="_blank" rel="noopener">分布式版本控制</a>软件，最初由<a href="https://zh.wikipedia.org/wiki/%E6%9E%97%E7%BA%B3%E6%96%AF%C2%B7%E6%89%98%E7%93%A6%E5%85%B9" target="_blank" rel="noopener">林纳斯·托瓦兹</a>创作，于2005年以<a href="https://zh.wikipedia.org/wiki/GPL" target="_blank" rel="noopener">GPL</a>发布。最初目的是为更好地管理<a href="https://zh.wikipedia.org/wiki/Linux%E5%86%85%E6%A0%B8" target="_blank" rel="noopener">Linux内核</a>开发而设计。 </p>
+<p>林纳斯·托瓦兹自嘲地取了这个名字“git”，该词源自英国俚语，意思大约是“混账”。 </p>
+<p><code>I&#39;m an egotistical bastard, and I name all my projects after myself. First Linux, now git.</code></p>
+</blockquote>
+<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><blockquote>
+<p>git更像一个文件系统，直接在本机上获取数据，不必连线到主机端获取数据。 每个开发者都可有全部开发历史的本地副本，changes从这种本地repository复制给其他开发者。这些changes作为新增的开发分支被导入，可以与本地开发分支合并。 </p>
+<p>分支是非常轻量级的，一个分支仅是对一个commit的引用。 </p>
+<p>git是用C语言开发的，以追求最高的性能。git自动完成垃圾回收，也可以用命令<code>git gc --prune</code>直接调用。 </p>
+<p>git存储每个新创建的object作为一个单独文件。为了压缩存储空间占用， packs操作把很多文件（启发式类似名字的文件往往具有类似内容）使用<a href="https://zh.wikipedia.org/wiki/%E5%B7%AE%E5%88%86%E5%8E%8B%E7%BC%A9" target="_blank" rel="noopener">差分压缩</a>入一个文件中（packfile），并创建一个对应的索引文件，指明object在packfile中的偏移值。新创建的对象仍然作为单独文件存在。repacks操作非常费时间，git会在空闲时间自动做此操作。也可用命令<code>git gc</code>来直接启动repack。packfile与索引文件都用SHA-1作为<a href="https://zh.wikipedia.org/wiki/%E6%A0%A1%E9%AA%8C%E5%92%8C" target="_blank" rel="noopener">校验和</a>并作为文件名。<code>git fsck</code>命令做校验和的完整性验证。</p>
+<p>Git服务器典型的TCP 监听端口为9418。</p>
+</blockquote>
+<h3 id="库目录"><a href="#库目录" class="headerlink" title="库目录"></a>库目录</h3><blockquote>
+<ul>
+<li>hooks：存储钩子的文件夹</li>
+<li>logs：存储日志的文件夹</li>
+<li>refs：存储指向各个分支的指针（SHA-1标识）文件</li>
+<li>objects：存放git对象</li>
+<li>config：存放各种设置文档</li>
+<li>HEAD：指向当前所在分支的指针文件路径，一般指向refs下的某文件</li>
+</ul>
+</blockquote>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><blockquote>
+<p>我们先来理解下Git 工作区、暂存区和版本库概念</p>
+<ul>
+<li><strong>工作区 (working directory)：</strong>就是你在电脑里能看到的目录。</li>
+<li><strong>暂存区 (staging index)：</strong>英文叫stage, 或index。一般存放在 “.git目录下” 下的index文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。</li>
+<li><strong>版本库 (git diretory[Repository])：</strong>工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。</li>
+</ul>
+</blockquote>
+<h3 id="Git-安装"><a href="#Git-安装" class="headerlink" title="Git 安装"></a>Git 安装</h3><p>git 支持windows、MAC OS X、Linux/Unix 全平台<br>windows/Mac 官网下载：<a href="https://www.git-scm.com/download/" target="_blank" rel="noopener">https://www.git-scm.com/download/</a><br>Ubantu：<code>sudo apt-get install git</code><br>CentOS：<code>sudoyum install git</code><br>检查是否安装成功：<code>git --version</code> 查看git版本</p>
+<h3 id="Git基本命令"><a href="#Git基本命令" class="headerlink" title="Git基本命令"></a>Git基本命令</h3><ul>
+<li><code>git init</code> 初始化本地git仓库（执行命令所在的目录下出现 .git 文件）</li>
+<li><code>git add</code> <ul>
+<li><code>git add filename</code> 将文件添加到暂存区</li>
+<li><code>git add .</code> 将工作目录下的所有修改的文件添加到暂存区</li>
+</ul>
+</li>
+<li><code>git commit</code> <ul>
+<li><code>git commit -m &#39;description&#39;</code> 将暂存区的文件提交到版本库</li>
+<li><code>git commit -am &#39;description&#39;</code> 跳过git add 添加到暂存区命令，直接将工作区所有已跟踪的文件提交</li>
+</ul>
+</li>
+<li><code>git log</code>  显示所有提交操作log<ul>
+<li><code>git log --oneline</code> 将所有提交信息在一行内显示</li>
+<li><code>git log -1 -p</code>  -p显示修改内容</li>
+<li><code>gik</code> 图形化显示日志信息</li>
+<li><code>git log --oneline --grap</code> </li>
+</ul>
+</li>
+<li><code>git status</code> 查看项目文件状态</li>
+<li><code>git config</code><ul>
+<li><code>git config --global user.name test</code> 添加用户身份象征username</li>
+<li><code>git config --global user.email 123456@qq.com</code>添加用户邮箱</li>
+<li><code>git config --lsit</code> 查看配置信息</li>
+<li><code>~/.gitconfig</code> 配置文件位置</li>
+</ul>
+</li>
+</ul>
+<h3 id="Git状态"><a href="#Git状态" class="headerlink" title="Git状态"></a>Git状态</h3><ul>
+<li>git 中文件的4种文件状态<ul>
+<li><code>Untracked</code>  未被追踪</li>
+<li><code>Modified</code> 表示工作区修改了某个文集但是还没有添加到暂存区</li>
+<li><code>Staged</code> 表示把工作区修改的文件添加到了暂存区但是还没有提交到版本库</li>
+<li><code>Committed</code> 表示数据安全的存储在本地库中</li>
+</ul>
+</li>
+</ul>
+<h3 id="Git撤销操作"><a href="#Git撤销操作" class="headerlink" title="Git撤销操作"></a>Git撤销操作</h3><ul>
+<li><code>git commit --amend</code>  撤销上一次提交并将暂存区的文件重新提交</li>
+<li><code>git checkout --filename</code> 拉取暂存区的文件并将其替换工作区的文件</li>
+<li><code>git reset HEAD filename</code> 拉取最近一次提交的版本库中的这个文件到暂存区，该操作不影响工作区</li>
+<li><code>git reset --option 版本号</code> <ul>
+<li><code>--hard</code> 回退暂存区和工作区到指定版本号 </li>
+<li><code>--mixed</code> 回退版本库和暂存区到指定版本号 </li>
+<li><code>--soft</code> 只回退版本库到指定版本 </li>
+</ul>
+</li>
+</ul>
+<h3 id="Git-文件删除"><a href="#Git-文件删除" class="headerlink" title="Git 文件删除"></a>Git 文件删除</h3><ul>
+<li><code>git rm filename</code> <ul>
+<li>删除工作区及暂存区中的该文件相当于删除后执行<code>git add</code></li>
+<li><code>git rm --cached filename</code> 在不小心将不需要追踪的文件添加到暂存区，想删除暂存的文件但是不想删除工作区的文件</li>
+<li><code>git rm -f filename</code> 当工作区或者暂存区文件修改了（防止修改误删除了）</li>
+<li><code>giob模式</code> <ul>
+<li>星号（*）匹配零个或多个任意字符</li>
+<li>[abc] 匹配任何一个列在方括号中的字符</li>
+<li>问号（?）只匹配一个任意字符</li>
+<li>[0-9] 、[a-z] 匹配范围</li>
+</ul>
+</li>
+<li><code>git mv oldname newname</code>  相当于<ul>
+<li><ol>
+<li>mv  oldname  newname</li>
+</ol>
+</li>
+<li><ol>
+<li>git rm oldname</li>
+</ol>
+</li>
+<li><ol>
+<li>git add newname</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>git 分支的创建、删除、切换、删除</code><ul>
+<li><code>git branch</code> 查看分支</li>
+<li><code>git branch branchname</code>创建分支</li>
+<li><code>git branch -m oldname newname</code> 修改分支名称</li>
+<li><code>git checkout [-b] branchname</code> 切换分支</li>
+<li><code>git branch -D branchname</code>删除分支</li>
+</ul>
+</li>
+</ul>
+<h3 id="分支的合并"><a href="#分支的合并" class="headerlink" title="分支的合并"></a>分支的合并</h3><ul>
+<li><strong>分支的指针</strong> HEAD指针指向当前工作的分支    在切换分支是指向新的分支</li>
+<li><strong>git diff</strong><ul>
+<li><code>git diff</code>  比较<strong>工作区</strong>与<strong>暂存区</strong>文件的差异</li>
+<li><code>git diff --staged</code> 比较<strong>暂存区</strong>与<strong>版本库</strong>的文件差异</li>
+<li><code>git diff 版本号 版本号</code>比较分支内的两个版本的差异</li>
+<li><code>git diff 分支 分支</code> 比较两个分支的最新提交版本的差异</li>
+</ul>
+</li>
+<li><strong>git merge branchname</strong>  合并之前需要先切换到master分支，快速合并和冲突合并</li>
+</ul>
+<h3 id="存储变更"><a href="#存储变更" class="headerlink" title="存储变更"></a>存储变更</h3><ul>
+<li><code>git stash</code> </li>
+<li><code>git stash list</code></li>
+<li><code>git stash apply stash@num</code>  git stash apply 后面不加名字，则应用最近一次存储信息</li>
+<li><code>git stash drop stash@num</code> git stash apply 只是运用存储的信息，并不删除它，drop 命令可以删除它</li>
+</ul>
+<h3 id="Github上的仓库"><a href="#Github上的仓库" class="headerlink" title="Github上的仓库"></a>Github上的仓库</h3><ul>
+<li>创建github账号</li>
+<li>创建仓库</li>
+<li>clone仓库到本地</li>
+<li>本地push到仓库</li>
+<li>pull代码到本地</li>
+<li>ignoing files 想忽略不想被追踪的文件，只需要将文件名字添加到<code>.gitignore</code>文件内，Git就会自动忽略这些文件</li>
+<li>fork and pull request</li>
+</ul>
+<h3 id="远程服务器上的仓库"><a href="#远程服务器上的仓库" class="headerlink" title="远程服务器上的仓库"></a>远程服务器上的仓库</h3><ul>
+<li><code>git init --bare</code> 创建远端仓库（在服务器或者工程目录以外路径都可以创建的备份仓库） </li>
+<li><code>git remote</code> 查看当前配置了哪些远程仓库</li>
+<li><code>git remote add name path</code> 要添加一个新的远程仓库，可以指定一个简单的名字 </li>
+<li><code>git remote rm name</code> 删除远程仓库 </li>
+<li><code>git remote rename oldname newname</code> 重命名远程仓库名</li>
+<li><code>git fetch</code> 从远程仓库下载新分支与数据 ，该命令执行完后需要执行git merge 远程分支到你所在的分支。 </li>
+</ul>
+<h3 id="Git-ssh免密登录"><a href="#Git-ssh免密登录" class="headerlink" title="Git ssh免密登录"></a>Git ssh免密登录</h3><ul>
+<li><code>ssh-kegen</code></li>
+<li><code>ssh-copy-id user@host</code> 将本机的公钥复制到远程服务器的<code>authorized_key</code>文件中</li>
+<li>如果不是自己的服务器可以将本地公钥发给服务器管理员 添加在<code>authorized_keys</code>文件后面</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Git/" <i="" class="fa fa-tag"> Git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2016/10/05/Python-常见算法题/" rel="prev" title="算法题">
+                算法题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">MDS</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Git"><span class="nav-number">1.</span> <span class="nav-text">Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现原理"><span class="nav-number">2.</span> <span class="nav-text">实现原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#库目录"><span class="nav-number">3.</span> <span class="nav-text">库目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本概念"><span class="nav-number">4.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-安装"><span class="nav-number">5.</span> <span class="nav-text">Git 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git基本命令"><span class="nav-number">6.</span> <span class="nav-text">Git基本命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git状态"><span class="nav-number">7.</span> <span class="nav-text">Git状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git撤销操作"><span class="nav-number">8.</span> <span class="nav-text">Git撤销操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-文件删除"><span class="nav-number">9.</span> <span class="nav-text">Git 文件删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支的合并"><span class="nav-number">10.</span> <span class="nav-text">分支的合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储变更"><span class="nav-number">11.</span> <span class="nav-text">存储变更</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Github上的仓库"><span class="nav-number">12.</span> <span class="nav-text">Github上的仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程服务器上的仓库"><span class="nav-number">13.</span> <span class="nav-text">远程服务器上的仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-ssh免密登录"><span class="nav-number">14.</span> <span class="nav-text">Git ssh免密登录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MDS</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共34.6k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

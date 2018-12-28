@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="TCP/IP,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="TCP/IP协议 互联网协议（英语：Internet Protocol Suite，缩写IPS）[1]是一个网络通信模型，以及一整个网络传输协议家族，为互联网的基础通信架构。它常被通称为TCP/IP协议族（英语：TCP/IP Protocol Suite，或TCP/IP Protocols），简称TCP/IP[2]。因为该协议家族的两个核心协议：TCP（传输控制协议）和IP（网际协议），为该家族中">
+<meta name="keywords" content="TCP&#x2F;IP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络协议">
+<meta property="og:url" content="https://toujourser.github.io/blog/2016/10/21/网络协议/index.html">
+<meta property="og:site_name" content="EchoDS">
+<meta property="og:description" content="TCP/IP协议 互联网协议（英语：Internet Protocol Suite，缩写IPS）[1]是一个网络通信模型，以及一整个网络传输协议家族，为互联网的基础通信架构。它常被通称为TCP/IP协议族（英语：TCP/IP Protocol Suite，或TCP/IP Protocols），简称TCP/IP[2]。因为该协议家族的两个核心协议：TCP（传输控制协议）和IP（网际协议），为该家族中">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12995081-b6ddcaf24d2a54cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12995081-1b598e30ffef7bd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-28T16:12:46.158Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络协议">
+<meta name="twitter:description" content="TCP/IP协议 互联网协议（英语：Internet Protocol Suite，缩写IPS）[1]是一个网络通信模型，以及一整个网络传输协议家族，为互联网的基础通信架构。它常被通称为TCP/IP协议族（英语：TCP/IP Protocol Suite，或TCP/IP Protocols），简称TCP/IP[2]。因为该协议家族的两个核心协议：TCP（传输控制协议）和IP（网际协议），为该家族中">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/12995081-b6ddcaf24d2a54cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://toujourser.github.io/blog/2016/10/21/网络协议/">
+
+
+
+
+
+  <title>网络协议 | EchoDS</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/toujourser" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">EchoDS</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://toujourser.github.io/blog/blog/2016/10/21/网络协议/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MDS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="EchoDS">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络协议</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-21T21:50:35+08:00">
+                2016-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/网络/" itemprop="url" rel="index">
+                    <span itemprop="name">网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h3><blockquote>
+<p><strong>互联网协议</strong>（英语：Internet Protocol Suite，缩写IPS）<a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F#cite_note-1" target="_blank" rel="noopener">[1]</a>是一个网络通信模型，以及一整个<a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">网络传输协议</a>家族，为<a href="https://zh.wikipedia.org/wiki/%E7%B6%B2%E9%9A%9B%E7%B6%B2%E8%B7%AF" target="_blank" rel="noopener">互联网</a>的基础通信架构。它常被通称为<strong>TCP/IP协议族</strong>（英语：TCP/IP Protocol Suite，或TCP/IP Protocols），简称<strong>TCP/IP</strong><a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F#cite_note-2" target="_blank" rel="noopener">[2]</a>。因为该协议家族的两个核心协议：TCP（<a href="https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">传输控制协议</a>）和IP（<a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AE" target="_blank" rel="noopener">网际协议</a>），为该家族中最早通过的标准<a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F#cite_note-3" target="_blank" rel="noopener">[3]</a>。由于在网络通讯协议普遍采用分层的结构，当多个层次的协议共同工作时，类似计算机科学中的<a href="https://zh.wikipedia.org/wiki/%E5%A0%86%E6%A0%88" target="_blank" rel="noopener">堆栈</a>，因此又被称为<strong>TCP/IP协议栈</strong>（英语：TCP/IP Protocol Stack）<a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F#cite_note-4" target="_blank" rel="noopener">[4]</a><a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F#cite_note-5" target="_blank" rel="noopener">[5]</a> 。这些协议最早发源于<a href="https://zh.wikipedia.org/wiki/%E7%BE%8E%E5%9B%BD%E5%9B%BD%E9%98%B2%E9%83%A8" target="_blank" rel="noopener">美国国防部</a>（缩写为DoD）的<a href="https://zh.wikipedia.org/wiki/ARPA%E7%BD%91" target="_blank" rel="noopener">ARPA网</a>项目，因此也被称作<strong>DoD模型</strong>（DoD Model）<a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F#cite_note-6" target="_blank" rel="noopener">[6]</a>。这个协议族由<a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%B7%A5%E7%A8%8B%E4%BB%BB%E5%8A%A1%E7%BB%84" target="_blank" rel="noopener">互联网工程任务组</a>负责维护。<br>TCP/IP提供点对点的链接机制，将数据应该如何封装、定址、传输、路由以及在目的地如何接收，都加以标准化。它将软件通信过程<a href="https://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E5%8C%96_(%E8%A8%88%E7%AE%97%E6%A9%9F%E7%A7%91%E5%AD%B8" target="_blank" rel="noopener">抽象化</a>)为四个<a href="https://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E5%B1%A4" target="_blank" rel="noopener">抽象层</a>，采取<a href="https://zh.wikipedia.org/w/index.php?title=%E5%8D%94%E5%AE%9A%E5%A0%86%E7%96%8A&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">协议堆栈</a>的方式，分别实现出不同通信协议。协议族下的各种协议，依其功能不同，被分别归属到这四个层次结构之中<a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F#cite_note-7" target="_blank" rel="noopener">[7]</a><a href="https://zh.wikipedia.org/wiki/TCP/IP%E5%8D%8F%E8%AE%AE%E6%97%8F#cite_note-8" target="_blank" rel="noopener">[8]</a>，常被视为是简化的七层<a href="https://zh.wikipedia.org/wiki/OSI%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">OSI模型</a>。</p>
+</blockquote>
+<h3 id="因特网协议栈中的层"><a href="#因特网协议栈中的层" class="headerlink" title="因特网协议栈中的层"></a>因特网协议栈中的层</h3><p><img src="https://upload-images.jianshu.io/upload_images/12995081-b6ddcaf24d2a54cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="OSI七层模型"></p>
+<p><code>通常人们认为OSI模型的最上面三层（应用层、表示层和会话层）在TCP/IP组中是一个应用层。由于TCP/IP有一个相对较弱的会话层，由TCP和RTP下的打开和关闭连接组成，并且在TCP和UDP下的各种应用提供不同的端口号，这些功能能够被单个的应用程序（或者那些应用程序所使用的库）增加。与此相似的是，IP是按照将它下面的网络当作一个黑盒子的思想设计的，这样在讨论TCP/IP的时候就可以把它当作一个独立的层。</code></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12995081-1b598e30ffef7bd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="TCP/IP协议栈"></p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>该层包括所有和应用程序协同工作，利用基础网络交换应用程序专用的数据的协议。 <a href="https://zh.wikipedia.org/wiki/%E5%BA%94%E7%94%A8%E5%B1%82" title="应用层" target="_blank" rel="noopener">应用层</a>是大多数普通与网络相关的程序为了通过网络与其他程序通信所使用的层。这个层的处理过程是应用特有的；数据从网络相关的程序以这种应用内部使用的格式进行传送，然后被编码成标准协议的格式。<br>在传输层，应用程序最常用的是TCP或者UDP，并且服务器应用程序经常与一个<a href="https://zh.wikipedia.org/wiki/TCP/UDP%E7%AB%AF%E5%8F%A3%E5%88%97%E8%A1%A8" title="TCP/UDP端口列表" target="_blank" rel="noopener">公开的端口号</a>相联系。服务器应用程序的端口由<a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%B7%E7%A0%81%E5%88%86%E9%85%8D%E5%B1%80" title="互联网号码分配局" target="_blank" rel="noopener">互联网号码分配局</a>（IANA）正式地分配，但是现今一些新协议的开发者经常选择它们自己的端口号。由于在同一个系统上很少超过少数几个的服务器应用，端口冲突引起的问题很少。应用软件通常也允许用户强制性地指定端口号作为运行<a href="https://zh.wikipedia.org/wiki/%E5%8F%82%E6%95%B0" title="参数" target="_blank" rel="noopener">参数</a>。</p>
+<h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><p><a href="https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E5%B1%82" title="传输层" target="_blank" rel="noopener">传输层</a>（transport layer）的协议，能够解决诸如端到端可靠性（“数据是否已经到达目的地？”）和保证数据按照正确的顺序到达这样的问题。在TCP/IP协议组中，传输协议也包括所给数据应该送给哪个应用程序。 在TCP/IP协议组中技术上位于这个层的动态路由协议通常被认为是网络层的一部分；</p>
+<p>TCP尽量连续不断地测试网络的负载并且控制发送数据的速度以避免网络过载。另外，TCP试图将数据按照规定的顺序发送。这是它与UDP不同之处，这在实时数据流或者路由高<a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%B1%82" title="网络层" target="_blank" rel="noopener">网络层</a>丢失率应用的时候可能成为一个缺陷。 较新的<a href="https://zh.wikipedia.org/wiki/%E6%B5%81%E6%8E%A7%E5%88%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE" title="流控制传输协议" target="_blank" rel="noopener">SCTP</a>也是一个“可靠的”、<a href="https://zh.wikipedia.org/wiki/%E9%80%A3%E6%8E%A5%E5%B0%8E%E5%90%91%E5%BC%8F%E9%80%9A%E8%A8%8A" title="连接导向式通信" target="_blank" rel="noopener">面向链接</a>的传输机制。它是面向纪录而不是面向字节的，它在一个单独的链接上提供通过多路复用提供的多个子流。它也提供多路自寻址支持，其中链接终端能够被多个IP地址表示（代表多个实体接口），这样的话即使其中一个连接失败了也不中断。它最初是为电话应用开发的（在<a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AE" title="网际协议" target="_blank" rel="noopener">IP</a>上传输<a href="https://zh.wikipedia.org/wiki/%E4%B8%83%E5%8F%B7%E4%BF%A1%E4%BB%A4%E7%B3%BB%E7%BB%9F" title="七号信令系统" target="_blank" rel="noopener">SS7</a>），但是也可以用于其他的应用。 </p>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE" title="用户数据报协议" target="_blank" rel="noopener">UDP</a>（IP协议号17）是一个<a href="https://zh.wikipedia.org/wiki/%E7%84%A1%E9%80%A3%E6%8E%A5%E5%BC%8F%E9%80%9A%E8%A8%8A" title="无连接式通信" target="_blank" rel="noopener">无链接</a>的数据报协议。它是一个“尽力传递”（best effort）或者说“不可靠”协议——不是因为它特别不可靠，而是因为它不检查数据包是否已经到达目的地，并且不保证它们按顺序到达。如果一个应用程序需要这些特性，那它必须自行检测和判断，或者使用<a href="https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE" title="传输控制协议" target="_blank" rel="noopener">TCP</a>协议。 UDP的典型性应用是如流媒体（音频和视频等）这样按时到达比可靠性更重要的应用，或者如<a href="https://zh.wikipedia.org/wiki/DNS" title="DNS" target="_blank" rel="noopener">DNS</a>查找这样的简单查询／响应应用，如果创建可靠的链接所作的额外工作将是不成比例地大。</p>
+<h4 id="网络互连层"><a href="#网络互连层" class="headerlink" title="网络互连层"></a>网络互连层</h4><p><em>TCP/IP协议族中的<strong>网络互连层</strong>（internet layer）在OSI模型中叫做<strong>网络层</strong>（network layer）。</em></p>
+<p>正如最初所定义的，<a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E5%B1%82" title="网络层" target="_blank" rel="noopener">网络层</a>解决在一个单一网络上传输数据包的问题。类似的协议有<a href="https://zh.wikipedia.org/wiki/X.25" title="X.25" target="_blank" rel="noopener">X.25</a>和<a href="https://zh.wikipedia.org/wiki/ARPANET" title="ARPANET" target="_blank" rel="noopener">ARPANET</a>的<a href="https://zh.wikipedia.org/w/index.php?title=Host/IMP_Protocol&amp;action=edit&amp;redlink=1" title="Host/IMP Protocol（页面不存在）" target="_blank" rel="noopener">Host/IMP Protocol</a>。 随着<a href="https://zh.wikipedia.org/wiki/Internet" title="Internet" target="_blank" rel="noopener">因特网</a>思想的出现，在这个层上添加附加的功能，也就是将数据从源<a href="https://zh.wikipedia.org/w/index.php?title=Computer_network&amp;action=edit&amp;redlink=1" title="Computer network（页面不存在）" target="_blank" rel="noopener">网络</a>传输到目的网络。这就牵涉到在网络组成的网上选择路径将数据包传输，也就是<a href="https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91" title="因特网" target="_blank" rel="noopener">因特网</a>。 在因特网协议组中，<a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AE" title="网际协议" target="_blank" rel="noopener">IP</a>完成数据从源发送到目的的基本任务。IP能够承载多种不同的高层协议的数据；这些协议使用一个唯一的<em>IP协议号</em>进行标识。ICMP和IGMP分别是1和2。 一些IP承载的协议，如<a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E6%8E%A7%E5%88%B6%E6%B6%88%E6%81%AF%E5%8D%8F%E8%AE%AE" title="互联网控制消息协议" target="_blank" rel="noopener">ICMP</a>（用来发送关于IP发送的诊断信息）和<a href="https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91%E7%BB%84%E7%AE%A1%E7%90%86%E5%8D%8F%E8%AE%AE" title="因特网组管理协议" target="_blank" rel="noopener">IGMP</a>（用来管理<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%92%AD" title="多播" target="_blank" rel="noopener">多播</a>数据），它们位于IP层之上但是完成网络层的功能，这表明因特网和OSI模型之间的不兼容性。所有的路由协议，如<a href="https://zh.wikipedia.org/wiki/Border_Gateway_Protocol" title="Border Gateway Protocol" target="_blank" rel="noopener">BGP</a>、<a href="https://zh.wikipedia.org/wiki/OSPF" title="OSPF" target="_blank" rel="noopener">OSPF</a>、和<a href="https://zh.wikipedia.org/wiki/%E8%B7%AF%E7%94%B1%E4%BF%A1%E6%81%AF%E5%8D%8F%E8%AE%AE" title="路由信息协议" target="_blank" rel="noopener">RIP</a>实际上也是网络层的一部分，尽管它们似乎应该属于更高的协议栈。</p>
+<p>####网络接口层<br>网络接口层实际上并不是因特网协议组中的一部分，但是它是数据包从一个设备的网络层传输到另外一个设备的网络层的方法。这个过程能够在<a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E5%8D%A1" title="网卡" target="_blank" rel="noopener">网卡</a>的<a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6" title="软件" target="_blank" rel="noopener">软件</a><a href="https://zh.wikipedia.org/wiki/%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F" title="驱动程序" target="_blank" rel="noopener">驱动程序</a>中控制，也可以在<a href="https://zh.wikipedia.org/wiki/%E9%9F%A7%E4%BD%93" title="韧体" target="_blank" rel="noopener">韧体</a>或者专用<a href="https://zh.wikipedia.org/wiki/%E8%8A%AF%E7%89%87" title="芯片" target="_blank" rel="noopener">芯片</a>中控制。这将完成如添加<a href="https://zh.wikipedia.org/w/index.php?title=%E6%8A%A5%E5%A4%B4&amp;action=edit&amp;redlink=1" title="报头（页面不存在）" target="_blank" rel="noopener">报头</a>准备发送、通过<a href="https://zh.wikipedia.org/wiki/Physical_layer" title="Physical layer" target="_blank" rel="noopener">实体</a><a href="https://zh.wikipedia.org/w/index.php?title=Transmission_medium&amp;action=edit&amp;redlink=1" title="Transmission medium（页面不存在）" target="_blank" rel="noopener">介质</a>实际发送这样一些<a href="https://zh.wikipedia.org/wiki/Data_link_layer" title="Data link layer" target="_blank" rel="noopener">数据链路</a>功能。另一端，链路层将完成数据帧接收、去除报头并且将接收到的包传到网络层。 然而，链路层并不经常这样简单。它也可能是一个<a href="https://zh.wikipedia.org/wiki/%E8%99%9A%E6%8B%9F%E4%B8%93%E6%9C%89%E7%BD%91%E7%BB%9C" title="虚拟专有网络" target="_blank" rel="noopener">虚拟专有网络</a>（VPN）或者隧道，在这里从网络层来的包使用<a href="https://zh.wikipedia.org/wiki/%E9%9A%A7%E9%81%93%E5%8D%8F%E8%AE%AE" title="隧道协议" target="_blank" rel="noopener">隧道协议</a>和其他（或者同样的）协议组发送而不是发送到实体的接口上。VPN和信道通常预先建好，并且它们有一些直接发送到实体接口所没有的特殊特点（例如，它可以加密经过它的数据）。由于现在链路“层”是一个完整的网络，这种协议组的<a href="https://zh.wikipedia.org/wiki/%E9%80%92%E5%BD%92_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6" target="_blank" rel="noopener">递归</a>)使用可能引起混淆。但是它是一个实现常见复杂功能的一个优秀方法。（尽管需要注意预防一个已经封装并且经隧道发送下去的数据包进行再次地封装和发送）。</p>
+<h3 id="IP网络如何并吞竞争的网络"><a href="#IP网络如何并吞竞争的网络" class="headerlink" title="IP网络如何并吞竞争的网络"></a>IP网络如何并吞竞争的网络</h3><p>在长期的发展过程中，IP逐渐取代其他网络。这里是一个简单的解释。IP传输通用数据。数据能够用于任何目的，并且能够很轻易地取代以前由专有数据网络传输的数据。下面是一个普通的过程：</p>
+<ol>
+<li>一个用于特定目的所开发出来的网络。如果它顺利工作，用户将能使用它。</li>
+<li>为了提供便利的IP服务，经常用于访问电子邮件或者聊天，通常以某种方式通过专有网络隧道实现。隧道方式最初可能非常没有效率，因为电子邮件和聊天只需要很低的带宽。</li>
+<li>通过一点点的投资IP基础设施逐渐在专有数据网络周边出现。</li>
+<li>用IP取代专有服务的需求出现，经常是一个用户要求。</li>
+<li>IP替代品过程遍布整个因特网，这使IP替代品比最初的专有网络更加有价值（由于<a href="https://zh.wikipedia.org/wiki/%E7%BD%91%E7%BB%9C%E6%95%88%E5%BA%94" title="网络效应" target="_blank" rel="noopener">网络效应</a>）。</li>
+<li>专有网络受到压制。许多用户开始维护使用IP替代品的复制品。</li>
+<li>IP包的间接开销很小，少于1%，这样在成本上非常有竞争性。人们开发一种能够将IP带到专有网络上的大部分用户的不昂贵的传输介质。</li>
+<li>大多数用户为了削减开销，专有网络被取消。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/TCP-IP/" <i="" class="fa fa-tag"> TCP/IP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/10/05/Python-常见算法题/" rel="next" title="算法题">
+                <i class="fa fa-chevron-left"></i> 算法题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2016/12/28/原码-反码-补码-位运算符/" rel="prev" title="原码 反码 补码 位运算符">
+                原码 反码 补码 位运算符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">MDS</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP协议"><span class="nav-number">1.</span> <span class="nav-text">TCP/IP协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#因特网协议栈中的层"><span class="nav-number">2.</span> <span class="nav-text">因特网协议栈中的层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用层"><span class="nav-number">2.1.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传输层"><span class="nav-number">2.2.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络互连层"><span class="nav-number">2.3.</span> <span class="nav-text">网络互连层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP网络如何并吞竞争的网络"><span class="nav-number">3.</span> <span class="nav-text">IP网络如何并吞竞争的网络</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MDS</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共34.6k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
