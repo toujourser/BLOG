@@ -82,16 +82,16 @@
 <meta name="description" content="简介React是Facebook开发并开源的前端框架。当时他们的团队在市面上没有找到合适的MVC框架，就自己写了一个Js框架，用来架设Instagram（图片分享社交网络）。2013年React开源。React解决的是前端MVC框架中的View视图层的问题。 Virtual DOMDOM（文档对象模型Document Object Model）  将网页内所有内容映射到一棵树型结构的层级对象模型上">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React 学习">
-<meta property="og:url" content="https://toujourser.github.io/blog/2017/09/12/React 学习/index.html">
+<meta property="og:title" content="React 笔记">
+<meta property="og:url" content="https://toujourser.github.io/blog/2017/11/25/React 学习/index.html">
 <meta property="og:site_name" content="EchoDS">
 <meta property="og:description" content="简介React是Facebook开发并开源的前端框架。当时他们的团队在市面上没有找到合适的MVC框架，就自己写了一个Js框架，用来架设Instagram（图片分享社交网络）。2013年React开源。React解决的是前端MVC框架中的View视图层的问题。 Virtual DOMDOM（文档对象模型Document Object Model）  将网页内所有内容映射到一棵树型结构的层级对象模型上">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12995081-c1e463bc85096271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/12995081-9f35a4358d926397.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-12-29T07:01:37.475Z">
+<meta property="og:updated_time" content="2018-12-29T10:20:36.193Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React 学习">
+<meta name="twitter:title" content="React 笔记">
 <meta name="twitter:description" content="简介React是Facebook开发并开源的前端框架。当时他们的团队在市面上没有找到合适的MVC框架，就自己写了一个Js框架，用来架设Instagram（图片分享社交网络）。2013年React开源。React解决的是前端MVC框架中的View视图层的问题。 Virtual DOMDOM（文档对象模型Document Object Model）  将网页内所有内容映射到一棵树型结构的层级对象模型上">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/12995081-c1e463bc85096271.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://toujourser.github.io/blog/2017/09/12/React 学习/">
+  <link rel="canonical" href="https://toujourser.github.io/blog/2017/11/25/React 学习/">
 
 
 
 
 
-  <title>React 学习 | EchoDS</title>
+  <title>React 笔记 | EchoDS</title>
   
 
 
@@ -266,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toujourser.github.io/blog/blog/2017/09/12/React 学习/">
+    <link itemprop="mainEntityOfPage" href="https://toujourser.github.io/blog/blog/2017/11/25/React 学习/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MDS">
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">React 学习</h1>
+          <h1 class="post-title" itemprop="name headline">React 笔记</h1>
         
 
         <div class="post-meta">
@@ -295,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-12T21:16:46+08:00">
-                2017-09-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-25T21:12:53+08:00">
+                2017-11-25
               </time>
             
 
@@ -385,6 +385,53 @@
 </ul>
 <h2 id="属性props"><a href="#属性props" class="headerlink" title="属性props **"></a>属性props **</h2><p>props就是组件的属性properties。<br>把React组件当做标签使用，可以为其增加属性，如下<br><code>&lt;Toggle name=&quot;school&quot; parent={this} /&gt;</code><br>为上面的Toggle元素增加属性：<br>1、 name = “school” ，这个属性会作为一个单一的对象传递给组件，加入到组件的props属性中<br>2、 parent = {this} ，注意这个this是在Root元素中，指的是Root组件本身<br>3、在Root中为使用JSX语法为Toggle增加子元素，这些子元素也会被加入Toggle组件的props.children中</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDom <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toggle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    state = &#123; <span class="attr">flag</span>: <span class="literal">true</span> &#125;; <span class="comment">// 类中定义state</span></span><br><span class="line">    handleClick(event) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(event.target.id);</span><br><span class="line">        <span class="built_in">console</span>.log(event.target === <span class="keyword">this</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.state);</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123; <span class="attr">flag</span>: !<span class="keyword">this</span>.state.flag &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;<span class="comment">/* 注意一定要绑定this onClick写成小驼峰 */</span></span><br><span class="line">        <span class="keyword">return</span> &lt;div id="t1" onClick=&#123;this.handleClick.bind(this)&#125;&gt;</span><br><span class="line">            点击这句话，会触发一个事件。&#123;this.state.flag.toString()&#125;&lt;br /&gt;</span><br><span class="line">            显示props&lt;br /&gt;</span><br><span class="line">            &#123;this.props.name&#125; : &#123;this.props.parent.state.p1 + this.props.parent.state.p2&#125;&lt;br /&gt;</span><br><span class="line">            &#123;this.props.children&#125;</span><br><span class="line">        &lt;/div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Root</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 定义一个对象</span></span><br><span class="line">    state = &#123; <span class="attr">p1</span>: <span class="string">'www.baidu'</span>, <span class="attr">p2</span>: <span class="string">'.com'</span> &#125;; <span class="comment">// 构造函数中定义state</span></span><br><span class="line">    render() &#123;</span><br><span class="line">    render).</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.setState(&#123; <span class="attr">p1</span>: <span class="string">'python.baidu'</span> &#125;), <span class="number">5000</span>);</span><br><span class="line">    <span class="comment">// setInterval(() =&gt; this.setState(&#123; p1: 'python.baidu' &#125;), 5000);</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">        	&lt;div&gt;Welcome to &#123;<span class="keyword">this</span>.state.p1&#125;&#123;<span class="keyword">this</span>.state.p2&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">            &lt;br /</span>&gt;</span><br><span class="line">            &lt;Toggle name=<span class="string">"school"</span> parent=&#123;<span class="keyword">this</span>&#125;&gt;&#123;<span class="comment">/*自定义2个属性通过props传给Toggle组件对象*/</span>&#125;</span><br><span class="line">            &lt;hr /&gt;&#123;<span class="comment">/*子元素通过props.children访问*/</span>&#125;</span><br><span class="line">            &lt;span&gt;我是Toggle元素的子元素&lt;<span class="regexp">/span&gt;&#123;/</span>*子元素通过props.children访问*<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Toggle&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;);</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">ReactDom.render(&lt;Root /</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+<p>尝试修改props中的属性值，会抛出<code>TypeError: Cannot assign to read only property &#39;name&#39; of object &#39;#\&lt;Object&gt;&#39;</code> 异常。</p>
+<blockquote>
+<p>应该说，state是私有private的属于组件自己的属性，组件外无法直接访问。可以修改state，但是建议使用<br>setState方法。<br>props是公有public属性，组件外也可以访问，但只读。</p>
+</blockquote>
+<h2 id="构造器constructor"><a href="#构造器constructor" class="headerlink" title="构造器constructor"></a>构造器constructor</h2><p>使用ES6的构造器，要提供一个参数props，并把这个参数使用super传递给父类</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDom <span class="keyword">from</span> <span class="string">'react-dom'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toggle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span> (props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props); <span class="comment">// 一定要调用super父类构造器，否则报错</span></span><br><span class="line">        <span class="keyword">this</span>.state = &#123; <span class="attr">flag</span>: <span class="literal">true</span> &#125;; <span class="comment">// 类中定义state</span></span><br><span class="line">    &#125;</span><br><span class="line">    handleClick(event) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(event.target.id);</span><br><span class="line">        <span class="built_in">console</span>.log(event.target === <span class="keyword">this</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.state);</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123; <span class="attr">flag</span>: !<span class="keyword">this</span>.state.flag &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;<span class="comment">/* 注意一定要绑定this onClick写成小驼峰 */</span></span><br><span class="line">        <span class="keyword">return</span> &lt;div id="t1" onClick=&#123;this.handleClick.bind(this)&#125;&gt;</span><br><span class="line">            点击这句话，会触发一个事件。&#123;this.state.flag.toString()&#125;&lt;br /&gt;</span><br><span class="line">            显示props&lt;br /&gt;</span><br><span class="line">            &#123;this.props.name&#125; : &#123;this.props.parent.state.p1 + this.props.parent.state.p2&#125;&lt;br /&gt;</span><br><span class="line">            &#123;this.props.children&#125;</span><br><span class="line">        &lt;/div&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Root</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 定义一个对象</span></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props); <span class="comment">// 一定要调用super父类构造器，否则报错</span></span><br><span class="line">        <span class="keyword">this</span>.state = &#123; <span class="attr">p1</span>: <span class="string">'www.baidu'</span>, <span class="attr">p2</span>: <span class="string">'.com'</span> &#125;; <span class="comment">// 构造函数中定义state</span></span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">    <span class="comment">// this.state.p1 = 'python.baidu'; // 可以修改属性值</span></span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.setState(&#123; <span class="attr">p1</span>: <span class="string">'python.baidu'</span> &#125;), <span class="number">5000</span>);</span><br><span class="line">    <span class="comment">// setInterval(() =&gt; this.setState(&#123; p1: 'python.baidu' &#125;), 5000);</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;div&gt;Welcome to &#123;<span class="keyword">this</span>.state.p1&#125;&#123;<span class="keyword">this</span>.state.p2&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;br /</span>&gt;</span><br><span class="line">        &lt;Toggle name=<span class="string">"school"</span> parent=&#123;<span class="keyword">this</span>&#125;&gt;&#123;<span class="comment">/*自定义2个属性通过props传给Toggle组件对象*/</span>&#125;</span><br><span class="line">            &lt;hr /&gt;&#123;<span class="comment">/*子元素通过props.children访问*/</span>&#125;</span><br><span class="line">            &lt;span&gt;我是Toggle元素的子元素&lt;<span class="regexp">/span&gt;&#123;/</span>*子元素通过props.children访问*<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Toggle&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;);</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">ReactDom.render(&lt;Root /</span>&gt;, <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h2><p>组件的生命周期可分成三个状态：</p>
+<ul>
+<li><p>Mounting：已插入真实 DOM</p>
+</li>
+<li><p>Updating：正在被重新渲染</p>
+</li>
+<li><p>Unmounting：已移出真实 DOM</p>
+<p>组件的生命周期状态，说明在不同时机访问组件，组件正处在生命周期的不同状态上。<br>在不同的生命周期状态访问，就产生不同的方法。</p>
+</li>
+</ul>
+<p><strong>生命周期的方法如下：</strong></p>
+<ul>
+<li><p>装载组件触发<br>componentWillMount 在渲染前调用，在客户端也在服务端。只会在装载之前调用一次。<br>componentDidMount : 在第一次渲染后调用，只在客户端。之后组件已经生成了对应的DOM结构，可<br>以通过this.getDOMNode()来进行访问。 如果你想和其他JavaScript框架一起使用，可以在这个方法中<br>调用setTimeout, setInterval或者发送AJAX请求等操作(防止异部操作阻塞UI)。只在装载完成后调用一<br>次，在render之后。</p>
+</li>
+<li><p>更新组件触发。这些方法不会在首次render组件的周期调用</p>
+<ul>
+<li>componentWillReceiveProps(nextProps) 在组件接收到一个新的prop时被调用。这个方法在初始化<br>render时不会被调用。</li>
+<li><p>shouldComponentUpdate(nextProps, nextState) 返回一个布尔值。在组件接收到新的props或者state<br>时被调用。在初始化时或者使用forceUpdate时不被调用。</p>
+<ul>
+<li><p>可以在你确认不需要更新组件时使用。</p>
+</li>
+<li><p>如果设置为false，就是不允许更新组件，那么componentWillUpdate、componentDidUpdate不会执行。</p>
+</li>
+</ul>
+</li>
+<li><p>componentWillUpdate(nextProps, nextState) 在组件接收到新的props或者state但还没有render时被调用。在初始化时不会被调用。</p>
+</li>
+<li>componentDidUpdate(prevProps, prevState) 在组件完成更新后立即调用。在初始化时不会被调用。</li>
+</ul>
+</li>
+<li><p>卸载组件触发</p>
+<ul>
+<li>componentWillUnmount在组件从 DOM 中移除的时候立刻被调用。</li>
+</ul>
+</li>
+</ul>
+<h2 id="无状态组件"><a href="#无状态组件" class="headerlink" title="无状态组件"></a>无状态组件</h2><p>React从15.0开始支持无状态组件，定义如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import ReactDom from &apos;react-dom&apos;;</span><br><span class="line">function Root(props) &#123;</span><br><span class="line">	return &lt;div&gt;&#123;props.schoolName&#125;&lt;/div&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDom.render(&lt;Root schoolName=&quot;baidu&quot; /&gt;, document.getElementById(&apos;root&apos;));</span><br></pre></td></tr></table></figure>
+<p>无状态组件，也叫<strong>函数式组件</strong>。<br>开发中，很多情况下，组件其实很简单，不需要state状态，也不需要使用生命周期函数。无状态组件很好的满足<br>了需要。<br>无状态组件函数应该提供一个参数props，返回一个React元素。<br>无状态组件函数本身就是render函数。</p>
+<p>改写上面的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;;</span><br><span class="line">import ReactDom from &apos;react-dom&apos;;</span><br><span class="line">let Root = props =&gt; &lt;div&gt;&#123;props.schoolName&#125;&lt;/div&gt;;</span><br><span class="line">ReactDom.render(&lt;Root schoolName=&quot;baidu&quot; /&gt;, document.getElementById(&apos;root&apos;));</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -415,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2017/09/12/MySQL 事务/" rel="next" title="MySQL事务">
-                <i class="fa fa-chevron-left"></i> MySQL事务
+              <a href="/blog/2017/10/06/元编程/" rel="next" title="元编程">
+                <i class="fa fa-chevron-left"></i> 元编程
               </a>
             
           </div>
@@ -424,10 +471,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2017/10/06/JS对象模型/" rel="prev" title="JS对象模型">
-                JS对象模型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -559,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Virtual-DOM"><span class="nav-number">2.</span> <span class="nav-text">Virtual DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持JSX语法"><span class="nav-number">3.</span> <span class="nav-text">支持JSX语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序解释"><span class="nav-number">4.</span> <span class="nav-text">程序解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX规范"><span class="nav-number">5.</span> <span class="nav-text">JSX规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件状态state"><span class="nav-number">6.</span> <span class="nav-text">组件状态state</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-DOM的JavaScript事件"><span class="nav-number">6.0.1.</span> <span class="nav-text">HTML DOM的JavaScript事件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分析"><span class="nav-number">6.0.1.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意："><span class="nav-number">6.0.1.2.</span> <span class="nav-text">注意：</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#属性props"><span class="nav-number">7.</span> <span class="nav-text">属性props **</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Virtual-DOM"><span class="nav-number">2.</span> <span class="nav-text">Virtual DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持JSX语法"><span class="nav-number">3.</span> <span class="nav-text">支持JSX语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序解释"><span class="nav-number">4.</span> <span class="nav-text">程序解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSX规范"><span class="nav-number">5.</span> <span class="nav-text">JSX规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件状态state"><span class="nav-number">6.</span> <span class="nav-text">组件状态state</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-DOM的JavaScript事件"><span class="nav-number">6.0.1.</span> <span class="nav-text">HTML DOM的JavaScript事件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分析"><span class="nav-number">6.0.1.1.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注意："><span class="nav-number">6.0.1.2.</span> <span class="nav-text">注意：</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#属性props"><span class="nav-number">7.</span> <span class="nav-text">属性props **</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造器constructor"><span class="nav-number">8.</span> <span class="nav-text">构造器constructor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件的生命周期"><span class="nav-number">9.</span> <span class="nav-text">组件的生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无状态组件"><span class="nav-number">10.</span> <span class="nav-text">无状态组件</span></a></li></div>
             
 
           </div>
@@ -600,7 +643,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共43.5k字</span>
+  <span class="post-count">博客全站共44.6k字</span>
 </div>
         
 
