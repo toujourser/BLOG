@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="方法一：1234567891011lst = [[1]]n = 6for i in range(1,n-1):    if i == 1:        lst.append([1,1])    newlst = [1]    for j in range(i):        newlst.append(lst[-1][j]+lst[-1][j+1])        newlst.append(">
+<meta name="description" content="123456789101112131415161718192021222324252627282930313233343536# 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。# 如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。# 注意你不能在买入股票前卖出股票prices = [7, 1, 5, 3, 6, 4, 23, 21, 6">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python实现杨辉三角">
-<meta property="og:url" content="https://toujourser.github.io/blog/2017/01/07/杨辉三角/index.html">
+<meta property="og:title" content="算法题_买卖股票的最佳时机">
+<meta property="og:url" content="https://toujourser.github.io/blog/2017/02/12/买卖股票的最佳时机/index.html">
 <meta property="og:site_name" content="EchoDS">
-<meta property="og:description" content="方法一：1234567891011lst = [[1]]n = 6for i in range(1,n-1):    if i == 1:        lst.append([1,1])    newlst = [1]    for j in range(i):        newlst.append(lst[-1][j]+lst[-1][j+1])        newlst.append(">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536# 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。# 如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。# 注意你不能在买入股票前卖出股票prices = [7, 1, 5, 3, 6, 4, 23, 21, 6">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-29T09:32:58.008Z">
+<meta property="og:updated_time" content="2018-12-29T10:29:33.353Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python实现杨辉三角">
-<meta name="twitter:description" content="方法一：1234567891011lst = [[1]]n = 6for i in range(1,n-1):    if i == 1:        lst.append([1,1])    newlst = [1]    for j in range(i):        newlst.append(lst[-1][j]+lst[-1][j+1])        newlst.append(">
+<meta name="twitter:title" content="算法题_买卖股票的最佳时机">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536# 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。# 如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。# 注意你不能在买入股票前卖出股票prices = [7, 1, 5, 3, 6, 4, 23, 21, 6">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://toujourser.github.io/blog/2017/01/07/杨辉三角/">
+  <link rel="canonical" href="https://toujourser.github.io/blog/2017/02/12/买卖股票的最佳时机/">
 
 
 
 
 
-  <title>python实现杨辉三角 | EchoDS</title>
+  <title>算法题_买卖股票的最佳时机 | EchoDS</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://toujourser.github.io/blog/blog/2017/01/07/杨辉三角/">
+    <link itemprop="mainEntityOfPage" href="https://toujourser.github.io/blog/blog/2017/02/12/买卖股票的最佳时机/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MDS">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python实现杨辉三角</h1>
+          <h1 class="post-title" itemprop="name headline">算法题_买卖股票的最佳时机</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-07T15:55:11+08:00">
-                2017-01-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-12T22:16:46+08:00">
+                2017-02-12
               </time>
             
 
@@ -352,9 +352,7 @@
       
 
       
-        <h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">lst = [[1]]</span><br><span class="line">n = 6</span><br><span class="line">for i in range(1,n-1):</span><br><span class="line">    if i == 1:</span><br><span class="line">        lst.append([1,1])</span><br><span class="line">    newlst = [1]</span><br><span class="line">    for j in range(i):</span><br><span class="line">        newlst.append(lst[-1][j]+lst[-1][j+1])    </span><br><span class="line">    newlst.append(1)</span><br><span class="line">    lst.append(newlst)</span><br><span class="line">print(lst)</span><br></pre></td></tr></table></figure>
-<h4 id="方法-二："><a href="#方法-二：" class="headerlink" title="方法 二："></a>方法 二：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pre = [1]</span><br><span class="line">print(pre)</span><br><span class="line">n = 6</span><br><span class="line">for i in range(1,n):</span><br><span class="line">	newlst = []</span><br><span class="line">	# pre.insert(0, 0)</span><br><span class="line">	pre.append(0)</span><br><span class="line">	for j in range(i+1):</span><br><span class="line">		newlst.append(pre[j-1]+pre[j])</span><br><span class="line">	print(newlst)</span><br><span class="line">	pre = newlst</span><br></pre></td></tr></table></figure>
-<h4 id="方法-三："><a href="#方法-三：" class="headerlink" title="方法 三："></a>方法 三：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">triangle = []</span><br><span class="line">n = 6</span><br><span class="line">for i in range(n):</span><br><span class="line">	row = [1]*(i+1)</span><br><span class="line">	triangle.append(row)</span><br><span class="line">	for j in range(1,i//2+1):</span><br><span class="line">		val = triangle[i-1][j-1] + triangle[i-1][j]</span><br><span class="line">		row[j]=val</span><br><span class="line">		if i!=2*j:</span><br><span class="line">			row[-j-1] = val</span><br><span class="line">print(triangle)</span><br></pre></td></tr></table></figure>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</span></span><br><span class="line"><span class="comment"># 如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。</span></span><br><span class="line"><span class="comment"># 注意你不能在买入股票前卖出股票</span></span><br><span class="line">prices = [<span class="number">7</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">23</span>, <span class="number">21</span>, <span class="number">65</span>, <span class="number">23</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type prices: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 1. 暴力求解 O(n^2)</span></span><br><span class="line">        <span class="comment"># max = 0</span></span><br><span class="line">        <span class="comment"># for i in range(0, len(prices)-1):</span></span><br><span class="line">        <span class="comment">#     for j in range(i, len(prices)):</span></span><br><span class="line">        <span class="comment">#         mxprofit = prices[j] - prices[i]</span></span><br><span class="line">        <span class="comment">#         if mxprofit &gt; max:</span></span><br><span class="line">        <span class="comment">#             max = mxprofit</span></span><br><span class="line">        <span class="comment"># return max</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2. O(n)</span></span><br><span class="line">        minprices = max(prices)</span><br><span class="line">        maxprices = <span class="number">0</span></span><br><span class="line">        dayin, dayout = <span class="keyword">None</span>, <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(prices)):</span><br><span class="line">            <span class="keyword">if</span> prices[i] &lt; minprices:</span><br><span class="line">                minprices = prices[i]</span><br><span class="line">                dayin = i</span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> (prices[i] - minprices) &gt; maxprices:</span><br><span class="line">                maxprices = prices[i] - minprices</span><br><span class="line">                dayout = i</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> maxprices, dayin, dayout</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -385,8 +383,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2017/01/04/正则表达式简单总结/" rel="next" title="正则表达式简单总结">
-                <i class="fa fa-chevron-left"></i> 正则表达式简单总结
+              <a href="/blog/2017/02/05/装饰器/" rel="next" title="装饰器">
+                <i class="fa fa-chevron-left"></i> 装饰器
               </a>
             
           </div>
@@ -395,8 +393,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2017/01/08/文件系统层次结构标准(FHS)/" rel="prev" title="文件系统层次结构标准(FHS)">
-                文件系统层次结构标准(FHS) <i class="fa fa-chevron-right"></i>
+              <a href="/blog/2017/02/14/VMware-安装-ArchLinux/" rel="prev" title="VMware-安装-ArchLinux">
+                VMware-安装-ArchLinux <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -449,17 +447,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -519,22 +508,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一："><span class="nav-number">1.</span> <span class="nav-text">方法一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法-二："><span class="nav-number">2.</span> <span class="nav-text">方法 二：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法-三："><span class="nav-number">3.</span> <span class="nav-text">方法 三：</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
